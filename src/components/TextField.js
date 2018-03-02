@@ -80,7 +80,7 @@ class TextField extends Component {
   singleLineLabelAV = new Animated.Value(this.props.value ? 1 : 0)
   colorAV = new Animated.Value(0)
 
-  _textInput: null
+  _textInput = null
 
   get styles() {
     return styles(this.props.theme)
@@ -119,6 +119,9 @@ class TextField extends Component {
       disabled,
       error,
       singleLine,
+      textInputProps,
+      textFieldErrorProps,
+      placeholderProps,
       ...other
     } = this.props
 
@@ -137,6 +140,7 @@ class TextField extends Component {
           selectionColor={Color(theme.colors.accent).alpha(0.87).rgbString()}
           underlineColorAndroid="transparent"
           {...other}
+          {...textInputProps}
           onFocus={this.handleFocus}
           onBlur={this.handleBlur} />
         <Animated.Text
@@ -166,6 +170,7 @@ class TextField extends Component {
               this.singleLineLabelAV,
             ),
           ]}
+          {...placeholderProps}
           onPress={this.focusInput}>
           {placeholder}
         </Animated.Text>
@@ -179,7 +184,7 @@ class TextField extends Component {
           })}
           type={disabled && 'dotted'}
           css={styles.divider} />
-        <TextFieldError>{error}</TextFieldError>
+        <TextFieldError {...textFieldErrorProps}>{error}</TextFieldError>
       </View>
     )
   }
@@ -221,6 +226,12 @@ TextField.propTypes = {
 
   // connectTheme
   theme: PropTypes.object.isRequired,
+
+  textInputProps: PropTypes.object,
+
+  textFieldErrorProps: PropTypes.object,
+
+  placeholderProps: PropTypes.object,
 
   /**
    * The style of the containing View.

@@ -1,6 +1,6 @@
 {
-  "name": "carbon-ui",
-  "version": "1000.0.0",
+  "name": "carbon-ui-divvito",
+  "version": "2.0.0",
   "description": "Material Design framework for React",
   "main": "lib/index.js",
   "scripts": {
@@ -13,9 +13,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/tuckerconnelly/carbon-ui.git"
+    "url": "https://github.com/divvito/carbon-ui.git"
   },
-  "homepage": "https://github.com/tuckerconnelly/carbon-ui.git",
+  "homepage": "https://github.com/divvito/carbon-ui.git",
   "keywords": [
     "react",
     "material",
