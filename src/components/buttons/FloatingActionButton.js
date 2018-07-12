@@ -41,7 +41,7 @@ class FloatingActionButton extends Component {
   _pressAV = new Animated.Value(0)
 
   render() {
-    const { accent, children, style, theme, size, ...other } = this.props
+    const { accent, children, style, theme, size, disabled, ...other } = this.props
 
     // Until Android implements `overflow: hidden`. Until then, the "rippled"
     // area would be square instead of round. See:
@@ -58,10 +58,12 @@ class FloatingActionButton extends Component {
           styles.base,
           animate(styles.base, styles.pressed, this._pressAV),
           accent && { backgroundColor: theme.colors.accent },
+          disabled && styles.disabled,
         ].concat(style)}>
         <TouchableComponent
           rippleColor="white"
           {...other}
+          disabled={disabled}
           style={styles.touchableRipple}
           onPressIn={this._setPressed}
           onPressOut={this._setNotPressed}>
@@ -86,6 +88,7 @@ FloatingActionButton.propTypes = {
   onPressIn: PropTypes.func,
   onPressOut: PropTypes.func,
   size: PropTypes.number,
+  disabled: PropTypes.boolean,
 
   // connectTheme
   theme: PropTypes.object.isRequired,
@@ -110,6 +113,10 @@ const tStyles = size => theme => ({
     backgroundColor: theme.colors.primary,
 
     ...Elevation.dp6,
+  },
+
+  disabled: {
+    backgroundColor: theme.colors.button.raised.disabled,
   },
 
   pressed: {
