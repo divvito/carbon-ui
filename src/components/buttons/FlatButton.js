@@ -32,6 +32,7 @@ const Button = ({
   children,
   theme,
   textStyle,
+  style,
   ...other
 }) => {
   // Themed styles
@@ -51,7 +52,7 @@ const Button = ({
   return (
     <TouchableRipple
       hitSlop={{ top: 6, right: 6, bottom: 6, left: 6 }}
-      css={[styles.base, disabled && styles.disabled]}
+      css={[styles.base, disabled && styles.disabled, style]}
       disabled={disabled}
       {...other}>
       {formattedChildren}
@@ -74,6 +75,7 @@ Button.propTypes = {
    * The style of the button text. Only applies if props.children isn't passed.
    */
   textStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array, PropTypes.number]),
+  style: PropTypes.object,
 
   // connectTheme
   theme: PropTypes.object.isRequired,
