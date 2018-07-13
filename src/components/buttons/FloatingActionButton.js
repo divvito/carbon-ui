@@ -88,7 +88,7 @@ FloatingActionButton.propTypes = {
   onPressIn: PropTypes.func,
   onPressOut: PropTypes.func,
   size: PropTypes.number,
-  disabled: PropTypes.boolean,
+  disabled: PropTypes.bool,
 
   // connectTheme
   theme: PropTypes.object.isRequired,
