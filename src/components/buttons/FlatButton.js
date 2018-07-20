@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Uranium from 'uranium'
+import { StyleSheet } from 'react-native'
 
 import {
   TouchableRipple,
@@ -52,7 +53,7 @@ const Button = ({
   return (
     <TouchableRipple
       hitSlop={{ top: 6, right: 6, bottom: 6, left: 6 }}
-      css={[styles.base, disabled && styles.disabled, style]}
+      css={StyleSheet.flatten([styles.base, disabled && styles.disabled, style])}
       disabled={disabled}
       {...other}>
       {formattedChildren}
